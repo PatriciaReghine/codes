@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>oi</h1>    
-</body>
-</html>
+<!-- Incluindo o topo padrão da página -->
+<?php include('include/topo.php'); ?>
+
+<h1>Hellow Word!</h1>
+
+<!-- Incluindo o footer padrão da página -->
+<?php include('include/footer.php'); ?>
