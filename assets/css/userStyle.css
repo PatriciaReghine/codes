@@ -1,0 +1,22 @@
+#containerMedicines,
+#containerVaccines {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+
+    padding: 1.6rem;
+    background: #84b6f4;
+
+    border-radius: 0.8rem;
+    margin-bottom: 3rem;
+}
+
+#containerMedicines p,
+#containerVaccines p {
+    color: #000000;
+}
+
+#containerMedicines p,
+#containerVaccines p {
+    margin-bottom: 1.4rem;
+}
