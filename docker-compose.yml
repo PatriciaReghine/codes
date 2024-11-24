@@ -1,6 +1,6 @@
 services:
   app:
-    image: php:apache
+    build: .
     container_name: php_apache_app
     volumes:
       - ./:/var/www/html
