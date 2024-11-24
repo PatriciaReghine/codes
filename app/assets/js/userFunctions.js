@@ -1,18 +1,66 @@
 /* MEDICAMENTOS */
 const containerMedicines = document.getElementById('containerMedicines');
 
-const contentToMedicines = `
-    <div class="medicine">
-        <p>Paracetamol</p>
-        <p>Tomando a 5 dias</p>
-    </div>
-    <div class="status">
-        <p>dia X - 08:40</p>   
-        <span>tomou</span> 
-    </div>
-`;
+// Função para calcular a quantidade de dias desde o início do medicamento
+function calculatePeriod(startDate) {
+    const today = new Date();
+    const start = new Date(startDate);
+    
+    // Calcula a diferença em milissegundos
+    const diffTime = today - start;
+    
+    // Converte a diferença para dias
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
-containerMedicines.innerHTML = contentToMedicines;
+    return diffDays;
+}
+
+// Função para exibir os medicamentos dinamicamente
+function displayMedicines(medicines) {
+    let contentToMedicines = '';
+
+    medicines.forEach(medicine => {
+        // Calcula o número de dias de uso do medicamento
+        const daysTaken = calculatePeriod(medicine.inicio_medicamento);
+        let inicio = new Date(medicine.inicio_medicamento);
+        let formattedDate = inicio.toLocaleDateString('pt-BR');
+        let formattedTime = inicio.toLocaleTimeString('pt-BR', { hour12: false }).slice(0, 5);
+        let formattedDateTime = `${formattedDate} ${formattedTime}`;
+
+        // Gera o conteúdo HTML para cada card
+        contentToMedicines += `
+            <div class="medicine">
+                <p class="title_medicine"><strong>${medicine.nome}</strong></p>
+                <p><strong>Tomando </strong>a ${daysTaken} dias</p>
+                <p><strong>Iniciado em</strong>: ${formattedDateTime}</p>
+                <span><strong>Status</strong>: ${medicine.recorrencia ? 'Recorrente' : 'Não recorrente'}</span>
+            </div><br><br>
+        `;
+        
+        containerMedicines.innerHTML = contentToMedicines;
+    });
+
+    // Inserir o conteúdo gerado na página
+}
+
+// Fazendo a requisição AJAX
+$.ajax({
+    url: 'doReturnMedicinesUser.php',  // Caminho para o seu arquivo PHP
+    method: 'GET',
+    success: function(response) {
+        // Verifica se a resposta é um array e exibe os dados
+        if (Array.isArray(response)) {
+            displayMedicines(response);
+        } else {
+            console.error("Erro ao carregar os dados.");
+        }
+    },
+    error: function(xhr, status, error) {
+        console.error("Erro na requisição Ajax: " + error);
+    }
+});
+
+
 
 /* VACINAS */
 const containerVaccines = document.getElementById('containerVaccines');
