@@ -35,6 +35,8 @@
     </div>
 </div>
 
+<!-- Incluindo o script para o uso do Jquery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Incluindo o script de funções para o médico -->
 <script src="./assets/js/registerFunctions.js"></script>
 <!-- Incluindo o footer padrão da página -->

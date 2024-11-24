@@ -1,3 +1,62 @@
+/* RECEBENDO DADOS DE USUÁRIO */
+$(document).ready(function() {
+    $('#searchUser').on('click', function() {
+
+        const backUrl = 'https://LinkDoBackend.com';
+        const cpf = $('#search').val();
+        
+        if(!cpf) {
+            return alert('CPF inválido');
+        }
+
+        $.ajax({
+            url: backUrl,
+            type: 'POST',
+            data: { cpf: cpf }, 
+            sucess: function (res) {
+                if(res.length > 0) {
+                    res.forEach(function(user) {
+                        res.append(`
+                            <div class="username">
+                                <p>Nome do Usuário: </p>
+                                <p>${user.username}</p>
+                            </div>
+            
+                            <div class="startDate">
+                                <p>Data de início: </p>
+                                <p>${user.startDate}</p>
+                            </div>
+            
+                            <div class="usePeriod">
+                                <p>Período de uso: </p>
+                                <p>${user.usePeriod}</p>
+                            </div>
+            
+                            <div class="typeOfPeriod">
+                                <p>Tipo de período: </p>
+                                <p>${user.typeOfPeriod}</p>
+                            </div>
+                        `)
+            })} else {
+                alert('Usuário não encontrado');
+                }
+                    
+            },
+            error: function (err) {
+                console.error(err);
+            }
+        });
+
+    });
+});
+
+
+
+
+
+
+
+/* NAV */
 const containerNav = document.getElementById('nav');
 
 const contentToNav = `
