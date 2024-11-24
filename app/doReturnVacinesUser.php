@@ -6,10 +6,10 @@ try {
     $pdo = Connection::getInstance();
     
     // Executando a consulta
-    $stmt = $pdo->query("SELECT m.nome, um.*
-                         FROM usuario_medicamento um
-                         LEFT JOIN medicamentos m ON m.idmedicamento = um.idmedicamento
-                         WHERE idusuario = 11
+    $stmt = $pdo->query("SELECT v.nome, vu.*
+        FROM vacinas_usuarios vu
+        LEFT JOIN vacinas v ON v.idvacina = vu.idvacina
+        WHERE idusuario = 11
     ");
     
     // Recuperando todos os resultados como um array associativo

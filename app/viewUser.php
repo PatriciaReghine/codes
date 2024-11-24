@@ -9,10 +9,14 @@
         <div id="containerMedicines"></div>
     </div>
 
+    <br><br><br>
+
     <div class="content-2">
         <h1>Vacinas</h1>
         <div id="containerVaccines"></div>
     </div>
+
+    <br><br><br>
 
     <div id="nav"></div>
 </div>

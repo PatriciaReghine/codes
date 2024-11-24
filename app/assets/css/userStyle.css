@@ -19,6 +19,7 @@
 #containerVaccines {
     justify-content: space-around;
     gap: 2rem;
+    min-width: 20em;
 
     padding: 1rem;
 
@@ -39,19 +40,29 @@
 }
 
 .navigation{
-    background: #265592;
+    background: #396db0;
+    width: 20em;
     
-    padding: 2rem;
-    border-radius: 0.8rem;
+    border-radius: 10px;
 }
 
 #nav ul {
     display: flex;
     align-items: center;
-    gap: 5rem;
+    justify-content: center;
+    gap: 6rem;
 
 
     list-style: none;
+}
+
+#nav li {
+    padding: 1em;
+}
+
+li.active {
+    background-color: #84ebf4;
+    border-radius: 10px;
 }
 
 div.medicine {
@@ -62,4 +73,20 @@ div.medicine {
 
 p.title_medicine {
     font-size: 1.3em;
+}
+
+button.botao_locais {
+    background-color: #84ebf4;
+    border-radius: 5px;
+    padding: 0.5em;
+    border: 1px solid #000000;
+    transition: 0.3s;
+}
+
+button.botao_locais:hover {
+    background-color: #84b6f4;
+    border-radius: 5px;
+    padding: 0.5em;
+    border: 1px solid #ffffff;
+    cursor: pointer;
 }

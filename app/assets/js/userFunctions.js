@@ -6,10 +6,7 @@ function calculatePeriod(startDate) {
     const today = new Date();
     const start = new Date(startDate);
     
-    // Calcula a diferença em milissegundos
     const diffTime = today - start;
-    
-    // Converte a diferença para dias
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
     return diffDays;
@@ -38,17 +35,16 @@ function displayMedicines(medicines) {
         `;
         
         containerMedicines.innerHTML = contentToMedicines;
-    });
 
-    // Inserir o conteúdo gerado na página
+    });
 }
 
 // Fazendo a requisição AJAX
 $.ajax({
-    url: 'doReturnMedicinesUser.php',  // Caminho para o seu arquivo PHP
+    url: 'doReturnMedicinesUser.php',
     method: 'GET',
     success: function(response) {
-        // Verifica se a resposta é um array e exibe os dados
+
         if (Array.isArray(response)) {
             displayMedicines(response);
         } else {
@@ -60,23 +56,56 @@ $.ajax({
     }
 });
 
-
-
 /* VACINAS */
 const containerVaccines = document.getElementById('containerVaccines');
 
-const contentToVaccines = `
-    <div class="medicine">
-        <p>Vacina para dengue</p>
-        <p>Há cada 6 meses</p>
-    </div>
-    <div class="status">
-        <p>jan/2024</p>   
-        <span>não tomou</span> 
-    </div>
-`;
+function displayVaccines(vaccines) {
+    let vaccineHTML = ''; // Variável para acumular os elementos gerados
 
-containerVaccines.innerHTML = contentToVaccines;
+    vaccines.forEach(vaccine => {
+        // Formatando a data das vacinas para tomar
+        let proxima_vacinacao = new Date(vaccine.proxima_vacinacao);
+        let formattedDateV = proxima_vacinacao.toLocaleDateString('pt-BR');
+
+        // Formatando a data das vacinas tomadas
+        let ultima_vacinacao = new Date(vaccine.ultima_vacinacao);
+        let formattedDateVt = ultima_vacinacao.toLocaleDateString('pt-BR');
+
+        // Gerando o HTML para este registro
+        const contentToVaccines = `
+            <div class="medicine">
+                <p class="title_medicine"><strong>${vaccine.nome}</strong></p>
+                <p><strong>Próxima: ${formattedDateV}</strong></p>
+                <p><strong>Tomada em: </strong>${formattedDateVt}</p>   
+                <Button class="botao_locais">Confira os locais -></button> 
+            </div><br><br>
+        `;
+
+        vaccineHTML += contentToVaccines; // Acumula o conteúdo
+    });
+
+    // Insere todo o conteúdo no contêiner de uma só vez
+    containerVaccines.innerHTML = vaccineHTML;
+}
+
+// Fazendo a requisição AJAX
+$.ajax({
+    url: 'doReturnVacinesUser.php',
+    method: 'GET',
+    dataType: 'json', // Certifique-se de que o servidor retorna JSON
+    success: function(response) {
+        if (Array.isArray(response)) {
+            console.log(response);
+            displayVaccines(response); // Exibe as vacinas
+        } else {
+            console.error("Erro ao carregar os dados: resposta não é um array.");
+        }
+    },
+    error: function(xhr, status, error) {
+        console.error("Erro na requisição Ajax: " + error);
+    }
+});
+
 
 /* NAV */
 const containerNav = document.getElementById('nav');
@@ -84,9 +113,9 @@ const containerNav = document.getElementById('nav');
 const contentToNav = `
     <nav class="navigation">
         <ul>
-            <li><a href="#home"><img width="50" height="50" src="https://img.icons8.com/ios/50/home-page.png" alt="home-page"/></a></li>
-            <li><a href="#requests"><img width="50" height="50" src="https://img.icons8.com/laces/64/apple-watch-apps.png" alt="apple-watch-apps"/></a></li>
-            <li><a href="#appointments"><img width="50" height="50" src="https://img.icons8.com/parakeet-line/48/moleskine.png" alt="moleskine"/></a></li>
+            <li class="active"><a href="#home"><img width="35" height="35" src="https://img.icons8.com/ios/35/home-page.png" alt="home-page"/></a></li>
+            <li><a href="#requests"><img width="35" height="35" src="https://img.icons8.com/laces/64/apple-watch-apps.png" alt="apple-watch-apps"/></a></li>
+            <li><a href="#appointments"><img width="35" height="35" src="https://img.icons8.com/parakeet-line/48/moleskine.png" alt="moleskine"/></a></li>
         </ul>
     </nav>
 `;
