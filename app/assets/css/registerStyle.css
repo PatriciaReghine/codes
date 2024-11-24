@@ -1,46 +1,40 @@
 .app {
     height: 100%;
-    color: hsl(0, 0%, 100%);
+    color: #ffffff;
+}
 
+.dashboard {
+    height: 100%;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 }
 
-.dashboard {
+#form {
     max-height: 68rem;
     overflow-y: auto;
+    background: #001449;
     
-    background-color: #001449;
-
     display: flex;
     flex-direction: column;
     gap: 2rem;
-
+    
     padding: 3rem;
     border-radius: 0.8rem;
 }
 
-.dashboard button {
-    height: 4rem;
-
-    border-radius: 0.5rem;
-
-    font-size: 1.8rem;
-    
+#form h1 {
+    font-size: 4rem;
     margin-top: 2rem;
-    
-    cursor: pointer;
-    
-    transition: filter .4s ;
 }
 
-.dashboard button:hover {
-    filter: brightness(0.8);
+#form label {
+    font-size: 2.4rem;
 }
 
-input {
+#form input, #form select {
     height: 3rem;
     border-radius: 0.5rem;
     padding: 1.4rem;
@@ -51,8 +45,27 @@ input {
     cursor: pointer;
 }
 
-p {
-    margin-bottom: 0.5rem;
+#form .allergyField {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#form button {
+    height: 4rem;
+
+    border-radius: 0.5rem;
+
+    font-size: 1.8rem;
+    transition: filter .4s ;
+
+    margin-top: 2rem;
+
+    cursor: pointer;
+}
+
+#form button:hover {
+    filter: brightness(0.8);
 }
 
 .navigation{

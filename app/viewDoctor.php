@@ -4,31 +4,41 @@
 
 <div class="app">
     <div class="dashboard">
-        <h1>Bem-vindo, Doutor.</h1>
+        <h1>Pesquisar usuário</h1>
+        
+        <label for="search">CPF do usuário:</label>
+        <input type="text" id="search" placeholder="Digite o CPF do usuário">
 
-        <form id="form">
-            <label for="remedy">Registre o medicamento do paciente X: </label>
-            <input type="text" id="remedy" placeholder="Digite aqui o medicamento">
+        <button type="submit" id="searchUser" >Buscar</button>
 
-            <label for="vacination">Registre sua ficha de vacinação:  </label>
-            <input type="text" id="vacination" placeholder="Digite aqui a vacina">
+        <div class="username">
+            <p>Nome do Usuário: </p>
+            <p>Pedro Fonseca</p>
+        </div>
+        
+        <div class="startDate">
+            <p>Data de início: </p>
+            <p>20/11/2024</p>
+        </div>
+        
+        <div class="usePeriod">
+            <p>Período de uso: </p>
+            <p>Desde ago/2024</p>
+        </div>
+        
+        <div class="typeOfPeriod">
+            <p>Tipo de período: </p>
+            <p>Diário</p>
+        </div>
 
-            <div class="allergyField">
-                <label for="allergy">O paciente possui alergia ?</label>
-                <label>
-                    <input type="radio" value="yes"> Sim
-                </label>
-                <label>
-                    <input type="radio" value="no"> Não
-                </label>
-            </div>
-
-            <button type="submit">Registrar</button>
-        </form>
+        <a href="#">Ver mais...</a>
     </div>
+    <div id="nav"></div>
 </div>
 
-<!-- Incluindo o script de funções para o médico -->
-<script src="./assets/js/doctorFunctions.js"></script>
+<!-- Incluindo o script para o uso do Jquery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Incluindo o script de funções do doutor -->
+<script src="./assets/js/doctorFunctions.js" ></script>
 <!-- Incluindo o footer padrão da página -->
 <?php include('include/footer.php'); ?>
