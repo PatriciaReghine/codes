@@ -1,11 +1,26 @@
 <?php
-$dsn = 'pgsql:host=postgres;port=5432;dbname=codex;';
-$user = 'postgres';
-$password = '123456';
 
-try {
-    $pdo = new PDO($dsn, $user, $password);
-    echo "Conexão com PostgreSQL bem-sucedida!";
-} catch (PDOException $e) {
-    echo "Erro ao conectar: " . $e->getMessage();
+class Connection
+{
+    private static $instance;
+
+    private function __construct() {}
+
+    public static function getInstance()
+    {
+        if (!self::$instance) {
+            $dsn      = 'pgsql:dbname=codex;host=192.168.100.210';
+            $user     = 'postgres';
+            $password = '123456';
+
+            try {
+                self::$instance = new PDO($dsn, $user, $password);
+                self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch (PDOException $e) {
+                die('Conexão falhou: ' . $e->getMessage());
+            }
+        }
+
+        return self::$instance;
+    }
 }
