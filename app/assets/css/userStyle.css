@@ -17,12 +17,10 @@
 
 #containerMedicines,
 #containerVaccines {
-    display: flex;
     justify-content: space-around;
     gap: 2rem;
 
-    padding: 2rem;
-    background: #84b6f4;
+    padding: 1rem;
 
     border-radius: 0.8rem;
     overflow-y: scroll;
@@ -54,4 +52,14 @@
 
 
     list-style: none;
+}
+
+div.medicine {
+    background: #84b6f4;
+    border-radius: 10px;
+    padding: 1em;
+}
+
+p.title_medicine {
+    font-size: 1.3em;
 }
