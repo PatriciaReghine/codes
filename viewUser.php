@@ -3,11 +3,19 @@
 <!-- Incluindo styles para usuário -->
 <link rel="stylesheet" href="./assets/css/userStyle.css" />
 
-<h1>Medicamentos</h1>
-<div id="containerMedicines"></div>
+<div class="app">
+    <div class="content-1">
+        <h1>Medicamentos</h1>
+        <div id="containerMedicines"></div>
+    </div>
 
-<h1>Vacinas</h1>
-<div id="containerVaccines"></div>
+    <div class="content-2">
+        <h1>Vacinas</h1>
+        <div id="containerVaccines"></div>
+    </div>
+
+    <div id="nav"></div>
+</div>
 
 <!-- Incluindo funções para usuário -->
 <script src="./assets/js/userFunctions.js"></script>
